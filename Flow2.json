@@ -1,0 +1,117 @@
+[
+    {
+        "id": "2e690b98766a8ed0",
+        "type": "tab",
+        "label": "Segundo Flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4aeb8de2c6051c12",
+        "type": "inject",
+        "z": "2e690b98766a8ed0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "15",
+        "topic": "\"hola g8\"",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 160,
+        "wires": [
+            [
+                "03e152ea3f4eebd0"
+            ]
+        ]
+    },
+    {
+        "id": "1d3378b932c98c1b",
+        "type": "debug",
+        "z": "2e690b98766a8ed0",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "03e152ea3f4eebd0",
+        "type": "function",
+        "z": "2e690b98766a8ed0",
+        "name": "",
+        "func": "\n// Lo que está después de “//” son comentarios\n// Crea un objeto Date a partir del payload enviado por timestamp\nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n// Regresa el mensaje para que se envíe al sigueinte nodo\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 160,
+        "wires": [
+            [
+                "1d3378b932c98c1b",
+                "8f2a35895ba84511"
+            ]
+        ]
+    },
+    {
+        "id": "8f2a35895ba84511",
+        "type": "ui_text",
+        "z": "2e690b98766a8ed0",
+        "group": "8d57cae10fd685a3",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "La hora es:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 630,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "8d57cae10fd685a3",
+        "type": "ui_group",
+        "name": "Tercer Flow",
+        "tab": "06d3010c15b8823c",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "06d3010c15b8823c",
+        "type": "ui_tab",
+        "name": "Hora - Flow 3",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
